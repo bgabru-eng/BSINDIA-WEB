@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incienso Hindú — B.S. India</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#C9A84C;--gold-light:#E2C97E;--gold-dark:#9A7A2E;--navy:#0D1B4B;--black:#05080F;--dark:#0A0D1A;--white:#F5F0E8;--white-dim:rgba(245,240,232,0.7);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(13,27,75,0.7) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(13,27,75,0.5) 0%,transparent 50%);pointer-events:none;z-index:0;}
+  body::after{content:'';position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23C9A84C' stroke-width='1' opacity='0.06'/%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.06'/%3E%3Cg stroke='%23C9A84C' stroke-width='0.5' opacity='0.07'%3E%3Cline x1='100' y1='10' x2='100' y2='190'/%3E%3Cline x1='10' y1='100' x2='190' y2='100'/%3E%3Cline x1='27' y1='27' x2='173' y2='173'/%3E%3Cline x1='173' y1='27' x2='27' y2='173'/%3E%3C/g%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;pointer-events:none;z-index:0;opacity:0.3;}
+  .container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px;}
+  header{border-bottom:1px solid rgba(201,168,76,0.2);position:sticky;top:0;background:rgba(5,8,15,0.96);backdrop-filter:blur(10px);z-index:100;}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px;flex-wrap:wrap;}
+  .logo-area{display:flex;align-items:center;gap:14px;text-decoration:none;}
+  .logo-img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(201,168,76,0.3));}
+  .logo-text h1{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:3px;}
+  .logo-text p{font-size:11px;color:var(--white-dim);letter-spacing:1.5px;font-family:'Crimson Pro',serif;font-style:italic;}
+  .back-btn{display:flex;align-items:center;gap:6px;color:var(--white-dim);text-decoration:none;font-size:12px;letter-spacing:1px;padding:7px 14px;border:1px solid rgba(201,168,76,0.2);border-radius:3px;font-family:'Cinzel',serif;transition:all 0.2s;}
+  .back-btn:hover{color:var(--gold);border-color:var(--gold);}
+  .gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);opacity:0.4;}
+  
+  /* HERO */
+  .hero{text-align:center;padding:56px 0 40px;}
+  .hero-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;color:var(--gold);margin-bottom:18px;opacity:0.7;}
+  .hero h2{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,46px);font-weight:600;color:var(--white);letter-spacing:2px;margin-bottom:14px;line-height:1.2;}
+  .hero h2 span{color:var(--gold);}
+  .hero p{font-family:'Crimson Pro',serif;font-size:17px;color:var(--white-dim);font-style:italic;max-width:520px;margin:0 auto 32px;line-height:1.7;}
+  .hero-badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .badge{font-size:10px;letter-spacing:1.5px;color:var(--gold);border:1px solid rgba(201,168,76,0.25);padding:5px 12px;border-radius:2px;font-family:'Cinzel',serif;}
+
+  /* CATEGORIES */
+  .section-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-align:center;margin-bottom:28px;opacity:0.6;}
+
+  .sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin-bottom:2px;}
+
+  .sub-card{background:rgba(13,27,75,0.4);border:1px solid rgba(201,168,76,0.12);padding:32px 24px;text-decoration:none;display:block;position:relative;overflow:hidden;transition:all 0.35s cubic-bezier(0.25,0.8,0.25,1);}
+  .sub-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.07) 0%,transparent 60%);opacity:0;transition:opacity 0.35s;}
+  .sub-card:hover{border-color:rgba(201,168,76,0.45);background:rgba(13,27,75,0.7);transform:translateY(-2px);}
+  .sub-card:hover::before{opacity:1;}
+
+  .sub-card-num{font-family:'Cinzel',serif;font-size:11px;color:rgba(201,168,76,0.35);letter-spacing:2px;margin-bottom:14px;display:block;}
+  .sub-card-icon{font-size:30px;margin-bottom:16px;display:block;line-height:1;}
+  .sub-card-name{font-family:'Cinzel',serif;font-size:17px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:8px;line-height:1.3;}
+  .sub-card-desc{font-family:'Crimson Pro',serif;font-size:14px;color:rgba(201,168,76,0.55);line-height:1.5;font-style:italic;}
+  .sub-card-arrow{position:absolute;right:20px;bottom:24px;font-size:18px;color:rgba(201,168,76,0.25);transition:all 0.3s;}
+  .sub-card:hover .sub-card-arrow{color:var(--gold);transform:translateX(4px);}
+
+  /* INFO STRIP */
+  .info-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.12);margin:48px 0;}
+  .info-item{background:var(--dark);padding:22px 18px;text-align:center;}
+  .info-item-icon{font-size:20px;margin-bottom:8px;}
+  .info-item-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;color:var(--gold);margin-bottom:5px;}
+  .info-item-text{font-size:12px;color:var(--white-dim);line-height:1.5;}
+
+  /* WA FLOAT */
+  .wa-float{position:fixed;bottom:28px;right:28px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.35);z-index:998;transition:transform 0.25s;}
+  .wa-float:hover{transform:scale(1.1);}
+  .wa-float svg{width:26px;height:26px;fill:white;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .hero{animation:fadeUp 0.7s ease forwards;}
+  .sub-card{animation:fadeUp 0.5s ease forwards;}
+  .sub-card:nth-child(2){animation-delay:0.05s;}
+  .sub-card:nth-child(3){animation-delay:0.1s;}
+  .sub-card:nth-child(4){animation-delay:0.15s;}
+  .sub-card:nth-child(5){animation-delay:0.2s;}
+
+  @media(max-width:600px){.sub-grid{grid-template-columns:1fr;} .hero{padding:36px 0 28px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <img src="logo.jpg" alt="B.S. India" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text"><h1>B.S. INDIA</h1><p>Importado directo de India</p></div>
+      </a>
+      <a href="index.html" class="back-btn">← INICIO</a>
+    </div>
+  </div>
+  <div class="gold-line"></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">✦ IMPORTADO DIRECTAMENTE DE INDIA ✦</p>
+    <h2>Incienso <span>Hindú</span></h2>
+    <p>La tradición milenaria del incienso indio, en varillas, conos y resinas. Purifica, armoniza y eleva cada espacio.</p>
+    <div class="hero-badges">
+      <span class="badge">100% NATURAL</span>
+      <span class="badge">HECHO EN INDIA</span>
+      <span class="badge">SIN QUÍMICOS</span>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- SUB-CATEGORIES -->
+<section style="padding:48px 0 0;">
+  <div class="container">
+    <p class="section-label">✦ ELIGE TU TIPO DE INCIENSO ✦</p>
+    <div class="sub-grid">
+
+      <a href="hexagonal.html" class="sub-card">
+        <span class="sub-card-num">01</span>
+        <span class="sub-card-icon">🪔</span>
+        <div class="sub-card-name">Hexagonal</div>
+        <div class="sub-card-desc">Paquetes hexagonales HEM · 6 tubos por caja · 20 varillas por tubo · El clásico de India</div>
+        <span class="sub-card-arrow">→</span>
+      </a>
+
+      <a href="natural.html" class="sub-card">
+        <span class="sub-card-num">02</span>
+        <span class="sub-card-icon">🌿</span>
+        <div class="sub-card-name">Natural Masala</div>
+        <div class="sub-card-desc">Varillas de masala 100% naturales · HEM, Himalaya & más · Aromas frescos y auténticos</div>
+        <span class="sub-card-arrow">→</span>
+      </a>
+
+      <a href="ritual.html" class="sub-card">
+        <span class="sub-card-num">03</span>
+        <span class="sub-card-icon">🕯️</span>
+        <div class="sub-card-name">Ritual Premium</div>
+        <div class="sub-card-desc">Dhoop & Wet Dhoop · El incienso de los templos de India · Sándalo, Rosas, Loban, Guggal</div>
+        <span class="sub-card-arrow">→</span>
+      </a>
+
+      <a href="cono.html" class="sub-card">
+        <span class="sub-card-num">04</span>
+        <span class="sub-card-icon">🔺</span>
+        <div class="sub-card-name">Cono</div>
+        <div class="sub-card-desc">Conos de incienso HEM & Satya · Caja con 10-12 conos · Tiempo de quemado: 25–40 min</div>
+        <span class="sub-card-arrow">→</span>
+      </a>
+
+      <a href="porta.html" class="sub-card">
+        <span class="sub-card-num">05</span>
+        <span class="sub-card-icon">🪵</span>
+        <div class="sub-card-name">Porta Incienso</div>
+        <div class="sub-card-desc">Porta inciensos artesanales en madera natural · Cofres, tablas, torres · Importados de India</div>
+        <span class="sub-card-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="container">
+  <div class="info-strip">
+    <div class="info-item">
+      <div class="info-item-icon">🌿</div>
+      <div class="info-item-title">100% Natural</div>
+      <div class="info-item-text">Sin carbón, sin químicos. Solo ingredientes naturales de India</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-icon">🇮🇳</div>
+      <div class="info-item-title">Importado Directo</div>
+      <div class="info-item-text">Traído directamente desde India para garantizar autenticidad</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-icon">🛕</div>
+      <div class="info-item-title">Uso en Templos</div>
+      <div class="info-item-text">Las mismas marcas usadas en templos y ceremonias de India</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-icon">💬</div>
+      <div class="info-item-title">¿Dudas?</div>
+      <div class="info-item-text">Escríbenos por WhatsApp y te asesoramos</div>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/524613247039" target="_blank" class="wa-float">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>

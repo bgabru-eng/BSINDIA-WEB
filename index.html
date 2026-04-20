@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.S. India — Tienda Hindu en México</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E2C97E;
+    --gold-dark: #9A7A2E;
+    --navy: #0D1B4B;
+    --navy-light: #1a2d6e;
+    --navy-mid: #142258;
+    --black: #05080F;
+    --dark: #0A0D1A;
+    --white: #F5F0E8;
+    --white-dim: rgba(245,240,232,0.7);
+    --white-faint: rgba(245,240,232,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ASHOKA PATTERN BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(13,27,75,0.6) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(13,27,75,0.4) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* SUBTLE CHAKRA WATERMARK */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23C9A84C' stroke-width='1' opacity='0.06'/%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='100' cy='100' r='8' fill='none' stroke='%23C9A84C' stroke-width='1' opacity='0.08'/%3E%3C!-- spokes --%3E%3Cg stroke='%23C9A84C' stroke-width='0.5' opacity='0.07'%3E%3Cline x1='100' y1='10' x2='100' y2='190'/%3E%3Cline x1='10' y1='100' x2='190' y2='100'/%3E%3Cline x1='27' y1='27' x2='173' y2='173'/%3E%3Cline x1='173' y1='27' x2='27' y2='173'/%3E%3Cline x1='15' y1='62' x2='185' y2='138'/%3E%3Cline x1='15' y1='138' x2='185' y2='62'/%3E%3Cline x1='62' y1='15' x2='138' y2='185'/%3E%3Cline x1='138' y1='15' x2='62' y2='185'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .container { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0 16px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .logo-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(201,168,76,0.3));
+  }
+
+  .logo-text h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    line-height: 1;
+  }
+
+  .logo-text p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    color: var(--white-dim);
+    letter-spacing: 2px;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--white-dim);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 8px 14px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+
+  .social-link:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.07);
+  }
+
+  .social-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .whatsapp-header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(37,211,102,0.12);
+    color: #25D366;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 1px solid rgba(37,211,102,0.3);
+    border-radius: 4px;
+    transition: all 0.25s;
+  }
+
+  .whatsapp-header:hover { background: rgba(37,211,102,0.2); }
+
+  /* ── GOLD DIVIDER LINE ── */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+    margin: 0;
+    opacity: 0.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 64px 0 48px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+
+  .hero h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  .hero h2 span { color: var(--gold); }
+
+  .hero p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px;
+    color: var(--white-dim);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .badge {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 5px 14px;
+    border-radius: 2px;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* ── CATEGORIES SECTION ── */
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 32px;
+    opacity: 0.7;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .cat-card {
+    position: relative;
+    background: rgba(13,27,75,0.4);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 32px 28px;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: block;
+  }
+
+  .cat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+
+  .cat-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    background: rgba(13,27,75,0.7);
+    transform: translateY(-2px);
+  }
+
+  .cat-card:hover::before { opacity: 1; }
+
+  .cat-card.ofertas {
+    background: rgba(154,122,46,0.15);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .cat-card.ofertas:hover {
+    background: rgba(154,122,46,0.25);
+    border-color: var(--gold);
+  }
+
+  .cat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: rgba(201,168,76,0.4);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .cat-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+    line-height: 1;
+  }
+
+  .cat-name {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .cat-card.ofertas .cat-name { color: var(--gold-light); }
+
+  .cat-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    color: rgba(201,168,76,0.6);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .cat-arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 28px;
+    font-size: 18px;
+    color: rgba(201,168,76,0.3);
+    transition: all 0.3s;
+  }
+
+  .cat-card:hover .cat-arrow {
+    color: var(--gold);
+    transform: translateX(4px);
+  }
+
+  /* FULL WIDTH OFERTAS */
+  .cat-card-full {
+    grid-column: 1 / -1;
+  }
+
+  /* ── INFO STRIPS ── */
+  .info-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    margin: 48px 0;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .info-item {
+    background: var(--dark);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .info-item-icon { font-size: 22px; margin-bottom: 10px; }
+
+  .info-item-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .info-item-text {
+    font-size: 12px;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+
+  /* ── SHIPPING + POLICY ── */
+  .policy-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 48px 0;
+  }
+
+  @media (max-width: 640px) {
+    .policy-section { grid-template-columns: 1fr; }
+  }
+
+  .policy-card {
+    background: rgba(13,27,75,0.3);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 28px 24px;
+  }
+
+  .policy-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .policy-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .policy-card ul li {
+    font-size: 13px;
+    color: var(--white-dim);
+    display: flex;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .policy-card ul li::before {
+    content: '—';
+    color: var(--gold-dark);
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .warning-text {
+    font-size: 12px;
+    color: rgba(201,168,76,0.5);
+    margin-top: 14px;
+    font-style: italic;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  /* ── TRACKING ── */
+  .tracking-section {
+    background: rgba(13,27,75,0.3);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 32px;
+    text-align: center;
+    margin: 0 0 48px;
+  }
+
+  .tracking-section h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .tracking-section p {
+    font-size: 13px;
+    color: var(--white-dim);
+    margin-bottom: 20px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+  }
+
+  .track-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 12px 28px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .track-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 40px 0 24px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .footer-brand h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--white-dim);
+    line-height: 1.7;
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    max-width: 300px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    opacity: 0.8;
+  }
+
+  .footer-col a, .footer-col p {
+    display: block;
+    font-size: 13px;
+    color: var(--white-dim);
+    text-decoration: none;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 11px;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 1px;
+  }
+
+  .footer-bottom span { color: var(--gold-dark); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    z-index: 999;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  }
+
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* ── MAPS BUTTON ── */
+  .maps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+    margin-top: 10px;
+  }
+
+  .maps-btn:hover { border-color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.8s ease forwards; }
+  .cat-card { animation: fadeUp 0.6s ease forwards; }
+  .cat-card:nth-child(2) { animation-delay: 0.05s; }
+  .cat-card:nth-child(3) { animation-delay: 0.1s; }
+  .cat-card:nth-child(4) { animation-delay: 0.15s; }
+  .cat-card:nth-child(5) { animation-delay: 0.2s; }
+  .cat-card:nth-child(6) { animation-delay: 0.25s; }
+  .cat-card:nth-child(7) { animation-delay: 0.3s; }
+  .cat-card:nth-child(8) { animation-delay: 0.35s; }
+
+  @media (max-width: 600px) {
+    .header-top { flex-direction: column; align-items: flex-start; }
+    .hero { padding: 40px 0 32px; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .cat-card-full { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="header-top">
+      <div class="logo-area">
+        <img src="logo.jpg" alt="B.S. India Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <h1>B.S. INDIA</h1>
+          <p>Auténtico · Natural · Importado</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="https://www.instagram.com/indiaenmexico" target="_blank" class="social-link">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @indiaenmexico
+        </a>
+        <a href="https://wa.me/524613247039" target="_blank" class="whatsapp-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          461 324 7039
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="gold-line"></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">✦ CELAYA, GUANAJUATO · ENVÍOS A TODO MÉXICO ✦</p>
+    <h2>Lo mejor de <span>India y Dubai</span><br>en el corazón de México</h2>
+    <p>Más de 7 años importando productos auténticos directamente de India y perfumes originales de Dubai. Calidad real, sin intermediarios.</p>
+    <div class="hero-badges">
+      <span class="badge">IMPORTADO DIRECTO</span>
+      <span class="badge">100% AUTÉNTICO</span>
+      <span class="badge">7 AÑOS DE EXPERIENCIA</span>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- CATEGORIES -->
+<section style="padding: 56px 0 0;">
+  <div class="container">
+    <p class="section-title">✦ NUESTRAS CATEGORÍAS ✦</p>
+    <div class="categories-grid">
+
+      <a href="perfume.html" class="cat-card">
+        <span class="cat-number">01</span>
+        <span class="cat-icon">🕌</span>
+        <div class="cat-name">Perfume Árabe</div>
+        <div class="cat-desc">Fragancias originales de Dubai · Dama, Caballero & Unisex</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="incienso.html" class="cat-card">
+        <span class="cat-number">02</span>
+        <span class="cat-icon">🪔</span>
+        <div class="cat-name">Incienso Hindú</div>
+        <div class="cat-desc">Hexagonal, Natural, Ritual, Cono · Palo Santo · Salvia · Porta Incienso</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="esencias.html" class="cat-card">
+        <span class="cat-number">03</span>
+        <span class="cat-icon">🌸</span>
+        <div class="cat-name">Esencias de la India</div>
+        <div class="cat-desc">Aromas naturales para difusor · Aromaterapia · 35 variedades</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="ayurveda.html" class="cat-card">
+        <span class="cat-number">04</span>
+        <span class="cat-icon">🌿</span>
+        <div class="cat-name">Ayurveda de la India</div>
+        <div class="cat-desc">Productos naturales ayurvédicos · Henna · Especias · Cuidado personal</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="mantas.html" class="cat-card">
+        <span class="cat-number">05</span>
+        <span class="cat-icon">🛏️</span>
+        <div class="cat-name">Mantas Algodón</div>
+        <div class="cat-desc">100% algodón natural importado · Individual, Matrimonial & Redonda</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="turbante.html" class="cat-card">
+        <span class="cat-number">06</span>
+        <span class="cat-icon">👳</span>
+        <div class="cat-name">Turbante Hindú</div>
+        <div class="cat-desc">Unisex · Talla única · Importado de India</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="tapete.html" class="cat-card">
+        <span class="cat-number">07</span>
+        <span class="cat-icon">🧘</span>
+        <div class="cat-name">Porta Tapete Yoga Algodón</div>
+        <div class="cat-desc">Accesorios de yoga · Algodón 100% natural · Importado de India</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="cuencos.html" class="cat-card">
+        <span class="cat-number">08</span>
+        <span class="cat-icon">🎵</span>
+        <div class="cat-name">Cuencos Tibetanos</div>
+        <div class="cat-desc">7 metales sagrados · Meditación & Sonoterapia · 7 Chakras · Importados de India</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+      <a href="ofertas.html" class="cat-card cat-card-full ofertas">
+        <span class="cat-number">09</span>
+        <span class="cat-icon">🔥</span>
+        <div class="cat-name">Ofertas</div>
+        <div class="cat-desc">Productos seleccionados con descuento especial · Tiempo limitado</div>
+        <span class="cat-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="container">
+  <div class="info-strip">
+    <div class="info-item">
+      <div class="info-item-icon">📦</div>
+      <div class="info-item-title">Envío en 24 hrs</div>
+      <div class="info-item-text">Procesamos tu pedido dentro de las 24 horas después de confirmar tu pago</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-icon">🇮🇳</div>
+      <div class="info-item-title">Importado Directo</div>
+      <div class="info-item-text">Productos auténticos importados directamente desde India y Dubai</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-icon">🚚</div>
+      <div class="info-item-title">Todo México</div>
+      <div class="info-item-text">Enviamos a toda la República Mexicana vía DHL, FedEx y más</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-icon">💬</div>
+      <div class="info-item-title">Atención por WhatsApp</div>
+      <div class="info-item-text">Escríbenos para hacer tu pedido o resolver cualquier duda</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKING -->
+<div class="container">
+  <div class="tracking-section">
+    <h3>📦 RASTREA TU PEDIDO</h3>
+    <p>¿Ya realizaste tu compra? Ingresa tu número de guía para rastrear tu envío en tiempo real.</p>
+    <a href="https://www.17track.net/es" target="_blank" class="track-btn">
+      RASTREAR MI PAQUETE →
+    </a>
+  </div>
+</div>
+
+<!-- POLICY CARDS -->
+<div class="container">
+  <div class="policy-section">
+    <div class="policy-card">
+      <h3>🚚 POLÍTICA DE ENVÍOS</h3>
+      <ul>
+        <li>Enviamos a toda la República Mexicana</li>
+        <li>Tu guía de rastreo llega por WhatsApp en 24 horas tras confirmar pago</li>
+        <li>Tiempos de entrega según ciudad y paquetería (DHL / FedEx)</li>
+        <li>Revisamos cada producto antes de empacar</li>
+        <li>En caso de daño en tránsito, documenta con fotos al recibir</li>
+      </ul>
+    </div>
+    <div class="policy-card">
+      <h3>⚠️ POLÍTICA DE VENTAS</h3>
+      <ul>
+        <li>No se aceptan devoluciones ni cambios una vez confirmado el pedido</li>
+        <li>Todos los productos son revisados antes del envío</li>
+        <li>Las fotos de productos son referenciales; colores pueden variar ligeramente</li>
+        <li>Stock sujeto a disponibilidad al momento del pago</li>
+      </ul>
+      <p class="warning-text">Al realizar tu compra, aceptas nuestras políticas de venta.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>B.S. INDIA</h4>
+        <p>Tienda especializada en productos auténticos de India y perfumes de Dubai, ubicada en Celaya, Guanajuato. Más de 7 años llevando lo mejor de Asia a México.</p>
+        <a href="https://www.google.com/maps?sca_esv=5e98847162235471&daddr=Soriana+200,+12+de+Octubre+Local+22,+Nuevo+Celaya,+38027+Celaya,+Gto." target="_blank" class="maps-btn">
+          📍 Cómo llegar →
+        </a>
+      </div>
+      <div class="footer-col">
+        <h5>UBICACIÓN</h5>
+        <p>Soriana 200, Local 22</p>
+        <p>12 de Octubre</p>
+        <p>Nuevo Celaya, 38027</p>
+        <p>Celaya, Gto. México</p>
+      </div>
+      <div class="footer-col">
+        <h5>CONTACTO</h5>
+        <a href="https://wa.me/524613247039" target="_blank">WhatsApp: 461 324 7039</a>
+        <a href="https://www.instagram.com/indiaenmexico" target="_blank">Instagram: @indiaenmexico</a>
+        <a href="https://www.17track.net/es" target="_blank">Rastrear pedido</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 B.S. India · Celaya, Guanajuato · México</p>
+      <p>Hecho con <span>♥</span> desde India para México</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/524613247039" target="_blank" class="wa-float" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
